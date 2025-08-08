@@ -1,0 +1,151 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN AKASH BATCHES</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .login-form { display: block; }
+        .content { display: none; }
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .server-btn {
+            display: block;
+            width: 100%;
+            background-color: #4285f4;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-form" id="loginForm">
+            <h1>LEARN AKASH QUICK ACCESS</h1>
+            <p>PASSWORD PROTECTED</p>
+            <input type="password" id="passwordInput" placeholder="Enter Password">
+            <button onclick="checkPassword()">Login</button>
+        </div>
+        
+        <div class="content" id="content">
+            <h1>LEARN AKASH QUICK ACCESS</h1>
+            
+            <div class="tab-buttons">
+                <button onclick="showTab('pw')">PW BY LEARN AKASH</button>
+                <button onclick="showTab('nxt')">NEXT TOPPERS BY LEARN AKASH</button>
+            </div>
+            
+            <div class="tab-content" id="pw">
+                <div class="server-btn" data-id="1">PW BATCH SERVER 1</div>
+                <div class="server-btn" data-id="2">PW BATCH SERVER 2</div>
+                <div class="server-btn" data-id="3">PW BATCH SERVER 3</div>
+            </div>
+            
+            <div class="tab-content" id="nxt">
+                <div class="server-btn" data-id="4">NEXT TOPPERS SERVER 1 (ALL)</div>
+                <div class="server-btn" data-id="5">NEXT TOPPERS CLASS 10</div>
+                <div class="server-btn" data-id="6">NEXT TOPPERS CLASS 10 SERVER 02</div>
+                <div class="server-btn" data-id="7">NEXT TOPPERS CLASS 09 SERVER 1</div>
+                <div class="server-btn" data-id="8">NEXT TOPPERS CLASS 09 SERVER 2</div>
+                <div class="server-btn" data-id="9">TOKEN OF SERVER 1</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password protection
+        function checkPassword() {
+            if (document.getElementById('passwordInput').value === '85') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                showTab('pw');
+            } else {
+                alert('Incorrect password!');
+            }
+        }
+
+        // Tab navigation
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // URL mapping with multiple obfuscation layers
+        const urlMap = {
+            1: 'aHR0cHM6Ly9zdHJlYW1maWxlcy5ldS5vcmcv',
+            2: 'aHR0cHM6Ly9zdHVkeXgtYXBwLnZlcmNlbC5hcHAvaG9tZQ==',
+            3: 'aHR0cHM6Ly9wd3Rob3Iuc2l0ZS9wdy5odG1s',
+            4: 'aHR0cHM6Ly90aGVlZHV2ZXJzZS54eXovYXV0aA==',
+            5: 'aHR0cHM6Ly90aGVlZHV2ZXJzZS54eXovbnh0LWJhdGNoLzEwdGgv',
+            6: 'aHR0cHM6Ly93d3cucm9sZXhjb2RlcnoueHl6L0FhcmFtYmg=',
+            7: 'aHR0cHM6Ly9zdHVkeXZlcnNlLW5ldHdvcmsubmV0bGlmeS5hcHAvbnh0LWJhdGNoLzl0aC8=',
+            8: 'aHR0cHM6Ly93d3cucm9sZXhjb2RlcnoueHl6Lzl0aEFhcmFtYmg=',
+            9: 'aHR0cHM6Ly90Lm1lL0VkdVZlcnNlS2V5X0JvdD9zdGFydA=='
+        };
+
+        // Secure URL opening
+        document.querySelectorAll('.server-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const urlId = this.getAttribute('data-id');
+                const encodedUrl = urlMap[urlId];
+                if (encodedUrl) {
+                    const decodedUrl = atob(encodedUrl);
+                    window.open(decodedUrl, '_blank', 'noopener,noreferrer');
+                }
+            });
+        });
+
+        // Security measures
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
